@@ -1,0 +1,330 @@
+/* stylelint-disable import-notation */
+@import "normalize.css/normalize.css";
+@import "./variables";
+// Import Tailwind CSS base styles
+@import url('tailwindcss/base');
+// Import Tailwind CSS components styles
+@import url('tailwindcss/components');
+// Import Tailwind CSS utilities styles
+@import url('tailwindcss/utilities');
+
+::placeholder {
+  color: $color-gray-250;
+}
+
+html,
+body,
+#app {
+  height: 100%;
+  font-family: $font-family;
+}
+
+.required::after {
+  color: #dc3545;
+  content: "*";
+}
+
+.content {
+  position: fixed;
+  inset: 60px 0 0 240px;
+  box-sizing: border-box;
+  min-width: 990px;
+  padding: 0 20px !important;
+  overflow: auto;
+  transition: all 0.2s;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  scrollbar-width: none;
+
+  &.stretch {
+    left: 100px;
+  }
+}
+
+// 商品中心的button樣式
+.primary-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #fff;
+  cursor: pointer;
+  background-color: #95db4b;
+  border: 0;
+  border-radius: 16px;
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+}
+
+.submit-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #fff;
+  cursor: pointer;
+  background-color: #95db4b;
+  border: 0;
+  border-radius: 16px;
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+}
+
+.secondary-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #fff;
+  cursor: pointer;
+  background-color: #666464;
+  border: 0;
+  border-radius: 16px;
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+}
+
+.cancel-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #fff;
+  cursor: pointer;
+  background-color: #666464;
+  border: 0;
+  border-radius: 16px;
+
+  &:disabled {
+    background-color: #d8d8d8;
+  }
+}
+
+.dark-green-border-button {
+  min-width: 100px;
+  padding: 6px 12px;
+  font-size: 14px;
+  font-weight: normal;
+  color: #75b136;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #75b136;
+  border-radius: 16px;
+}
+
+.savedraft-button,
+.saveimg-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #666;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 16px;
+
+  &:disabled {
+    color: #fff;
+    background-color: #d8d8d8;
+    border-color: transparent;
+  }
+}
+
+.saveitem-button {
+  min-width: 100px;
+  padding: 6px 23px;
+  font-weight: normal;
+  color: #666;
+  cursor: pointer;
+  background-color: #fff;
+  border: 1px solid #999;
+  border-radius: 16px;
+
+  &:disabled {
+    color: #fff;
+    background-color: #d8d8d8;
+    border-color: transparent;
+  }
+}
+
+// 商品中心的modal樣式
+// AlertModal,ConfirmModal 使用的樣式，用來呈現系統 alert 或 confirm 的 dialog
+// 如果有其他需要，需自行新增樣式
+.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    width: 80px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: normal;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    border-radius: 16px;
+
+    &--small {
+      width: 80px;
+    }
+
+    &--medium {
+      width: 100px;
+    }
+
+    &--confirm {
+      background-color: #95db4b;
+    }
+
+    &--confirm:hover {
+      background-color: #75b136;
+    }
+
+    &--cancel {
+      margin-right: 15px;
+      background-color: #666464;
+    }
+
+    &--disable {
+      cursor: auto;
+      background-color: #d8d8d8;
+    }
+  }
+
+  &__container {
+    position: relative;
+    width: 400px;
+    min-height: 100px;
+    background: #fff;
+    border: 1px solid $color-gray-100;
+    border-radius: 5px;
+
+    &--small {
+      width: 350px;
+    }
+
+    &--medium {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 750px;
+      min-height: 550px;
+    }
+
+    &--announcement {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 900px;
+      height: 85vh;
+      max-height: 760px;
+    }
+
+    &--attachment {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 750px;
+      height: 85vh;
+      max-height: 486px;
+    }
+
+    &--price-change-log {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 700px;
+      max-height: 85vh;
+    }
+
+    &--large {
+      width: 900px;
+    }
+
+    // 設定 modal視窗高度
+    &--height-max-70 {
+      max-height: 70%;
+    }
+
+    &-puchase {
+      padding: 0;
+    }
+
+    &--width-max-400 {
+      max-width: 400px;
+    }
+
+    &--scroll {
+      display: flex;
+      flex-direction: column;
+      max-height: 90%;
+    }
+  }
+
+  &__navigator {
+    position: relative;
+    width: 640px;
+    min-height: 100px;
+    background: #fff;
+  }
+
+  &__close {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+
+  &__title {
+    padding: 16px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #666;
+  }
+
+  &__message {
+    min-height: 28px;
+    font-size: 14px;
+    color: #666;
+
+    & + & {
+      margin-top: 1rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    min-height: 0;
+    padding: 0 20px;
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: rgb(216 216 216 / 80%);
+      border-radius: 4px;
+    }
+
+    > span {
+      display: block;
+    }
+  }
+
+  &__footer {
+    padding: 0 1rem 20px;
+    text-align: center;
+  }
+}
+
+.input-height {
+  height: $input-height;
+}

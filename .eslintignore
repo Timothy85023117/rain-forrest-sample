@@ -1,0 +1,9 @@
+.gitignore
+.lintstagedrc.js
+.husky/
+.vscode/
+dist/
+node_modules/
+public/
+.eslintrc.cjs
+stylelint.config.js

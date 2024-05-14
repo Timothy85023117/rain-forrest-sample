@@ -1,0 +1,1 @@
+export const FILE_UPLOAD_MAX_NAME_LENGTH = 100;
