@@ -27,10 +27,6 @@
 
 [VSCode](https://code.visualstudio.com/)
 
-[Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur)
-
-[TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin)
-
 [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
 
 [EditorConfig for VS Code](https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig)
