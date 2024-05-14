@@ -7,4 +7,8 @@ import { RouterView } from "vue-router";
 
 // 取得
 </script>
-<!-- <style lang="scss" scoped></style> -->
+<style lang="scss" scoped>
+.background {
+  width: 100%;
+}
+</style>
