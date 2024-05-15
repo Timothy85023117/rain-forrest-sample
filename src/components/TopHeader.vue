@@ -68,7 +68,7 @@ const userName = "Tom (Tom)";
   width: 100%;
   z-index: 99;
   background-color: #fff;
-  box-shadow: 0 4px 20px 0 #ecebeb, 0 2px 10px 0 #efefef; //暫時放的樣式
+  box-shadow: 0 0 16px 0 rgba($color: #d9d9d6, $alpha: 50%);
 
   .l-wrap {
     height: 60px;

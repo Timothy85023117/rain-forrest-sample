@@ -437,8 +437,13 @@ const handleClose = (key: string, keyPath: string[]) => {
 <style lang="scss" scoped>
 .sidebar {
   top: 60px;
-  z-index: 100;
+  z-index: 98;
   height: calc(100% - 60px);
+  box-shadow: 0 0 16px 0 rgba($color: #d9d9d6, $alpha: 50%);
+}
+
+.el-menu {
+  border-right: none;
 }
 
 .el-menu-item {
@@ -483,7 +488,7 @@ const handleClose = (key: string, keyPath: string[]) => {
   min-height: calc(100vh - 60px);
 
   &:not(.el-menu--collapse) {
-    width: 200px;
+    width: 240px;
   }
 }
 </style>
