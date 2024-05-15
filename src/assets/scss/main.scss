@@ -328,3 +328,72 @@ body,
 .input-height {
   height: $input-height;
 }
+//LeftSidebar
+.el-sub-menu {
+  &__icon-arrow {
+    font-size: 24px;
+    margin-top: -12px;
+  }
+
+  &__title {
+    height: 40px;
+    line-height: 1;
+    padding: 11px var(--el-menu-base-level-padding);
+
+    &:hover {
+      background-color: #76c144;
+
+      span{
+        color: #fff;
+      }
+
+      svg {
+        path,circle,rect,ellipse {
+          stroke: #fff;
+        }
+
+        g path {
+          stroke: #fff;
+        }
+      }
+
+    }
+  }
+}
+
+.el-menu-item {
+  height: 40px;
+  line-height: 1;
+  padding: 11px var(--el-menu-base-level-padding);
+
+  &:hover,
+  &.is-active {
+    background-color: #76c144;
+
+    span {
+      color: #fff;
+    }
+
+    svg {
+      path,circle,ellipse,rect {
+        stroke: #fff;
+      }
+
+      g path {
+        stroke: #fff;
+      }
+    }
+  }
+
+  .el-menu-tooltip {
+    &__trigger {
+      padding: 11px var(--el-menu-base-level-padding);
+    }
+  }
+
+  [class^="el-icon"] {
+    margin-right: 8px;
+  }
+}
+
+

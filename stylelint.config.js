@@ -15,5 +15,7 @@ module.exports = {
     'stylelint-config-standard',
     'stylelint-config-recommended-vue'
   ],
-  rules: {},
+  rules: {
+    'selector-class-pattern': null,
+  },
 };
