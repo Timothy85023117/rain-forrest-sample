@@ -37,18 +37,27 @@
             />
           </svg>
         </div>
-        <router-link class="logo" :to="{ name: 'Dashboard' }">
-          <img
-            src="https://www.rainforestretail.com.tw/wp-content/themes/project-theme/src/img/public/logo.svg"
-            alt=""
-          />
+        <router-link class="logo" :to="{ name: 'caseOverview' }">
+          <img src="../assets/images/Logo-Horizonal.svg" alt="logo" />
         </router-link>
       </div>
       <div class="flex items-center mr-4">
-        <span class="gear mr-2">
+        <NotifyComponent />
+        <el-dropdown trigger="click">
+          <span class="el-dropdown-link">
+            {{ userName }}
+            <el-icon class="el-icon--right"><arrow-down /></el-icon>
+          </span>
+          <template #dropdown>
+            <el-dropdown-menu>
+              <el-dropdown-item>登出</el-dropdown-item>
+            </el-dropdown-menu>
+          </template>
+        </el-dropdown>
+        <!-- <span class="gear mr-2">
           <img src="@/assets/images/navbar-setting-fill.svg" alt="" />
         </span>
-        <span class="text-sm ml-1">{{ userName }}</span>
+        <span class="text-sm ml-1">{{ userName }}</span> -->
       </div>
     </div>
   </div>
@@ -59,6 +68,9 @@ export default {
 };
 </script>
 <script lang="ts" setup>
+import NotifyComponent from "@/components/NotifyComponent.vue";
+
+import { ArrowDown } from "@element-plus/icons-vue";
 import { useMenuStatusStore } from "@/stores/menu-status";
 const store = useMenuStatusStore();
 const userName = "Tom (Tom)";
@@ -72,7 +84,7 @@ const userName = "Tom (Tom)";
 
   .l-wrap {
     height: 60px;
-    padding-left: 42px;
+    padding-left: 16px;
 
     .hamburger {
       width: 24px;
