@@ -527,7 +527,56 @@
       </template>
     </el-dialog>
     <el-dialog v-model="dialogFormTitle" title="單位資訊">
-      <div class="dialog-content"></div>
+      <div class="dialog-content">
+        <div class="dialog-content">
+          <el-form label-position="top" class="grid gap-4 grid-cols-3">
+            <div class="pure-txt-block">
+              <div for="" class="pure-txt-block--title">序號</div>
+              <div class="pure-txt-block--content">
+                <p>1</p>
+              </div>
+            </div>
+            <el-form-item label="指派單位" class="mb-0">
+              <el-select
+                v-model="valueSelect"
+                filterable
+                placeholder="請選擇單位"
+                size="large"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="指派單位" class="mb-0">
+              <el-select
+                v-model="valueSelect1"
+                filterable
+                placeholder="請選擇人員"
+                size="large"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="狀態" class="mb-0">
+              <el-radio-group v-model="radio1" class="w-full">
+                <el-radio value="1" size="large" class="w-1/2 mr-0"
+                  >啟用</el-radio
+                >
+                <el-radio value="2" size="large" class="w-1/2">停用</el-radio>
+              </el-radio-group>
+            </el-form-item>
+          </el-form>
+        </div>
+      </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
           <el-button
@@ -548,7 +597,63 @@
       </template>
     </el-dialog>
     <el-dialog v-model="dialogChoseFormTitle" title="指派">
-      <div class="dialog-content"></div>
+      <div class="dialog-content">
+        <div class="dialog-content--warn-tip mb-4">
+          <p>*處理客服或是指派其他單位二擇一</p>
+        </div>
+        <el-form label-position="top" class="grid gap-4 grid-cols-3">
+          <el-form-item label="處理客服" class="mb-0">
+            <el-select
+              v-model="valueSelect"
+              filterable
+              placeholder="請選擇客服"
+              size="large"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+        </el-form>
+        <div class="divider-line">
+          <span>或</span>
+        </div>
+        <el-form label-position="top" class="grid gap-4 grid-cols-3">
+          <el-form-item label="指派單位" class="mb-0">
+            <el-select
+              v-model="valueSelect"
+              filterable
+              placeholder="請選擇單位"
+              size="large"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+          <el-form-item label="指派人員" class="mb-0">
+            <el-select
+              v-model="valueSelect1"
+              filterable
+              placeholder="請選擇人員"
+              size="large"
+            >
+              <el-option
+                v-for="item in options"
+                :key="item.value"
+                :label="item.label"
+                :value="item.value"
+              />
+            </el-select>
+          </el-form-item>
+        </el-form>
+      </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
           <el-button

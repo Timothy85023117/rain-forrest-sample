@@ -136,6 +136,15 @@ body {
 }
 
 /* ======== el-radio ======== */
+.el-radio {
+  &.el-radio--large{
+    .el-radio__label{
+      padding-left: 13px;
+      color: $color-black;
+      font-weight: 400;
+    }
+  }
+}
 
 /* ======== el-pagination ======== */
 .el-pagination__sizes{
@@ -586,6 +595,14 @@ body {
     min-height: 120px;
   }
 
+  .dialog-content--warn-tip{
+    color: $color-orange-500;
+    font-size: 14px;
+
+    p{
+      font-size: inherit;
+    }
+  }
 }
 
 .modal {
@@ -808,3 +825,51 @@ body {
     background-color: $color-white;
   }
 }
+
+.pure-txt-block{
+  .pure-txt-block--title{
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: $color-gray-800;
+  }
+
+  .pure-txt-block--content{
+    padding: 10px 8px;
+    color:$color-black;
+    font-size: 14px;
+    line-height: 1.25;
+  }
+}
+
+.divider-line{
+  position: relative;
+  z-index: 0;
+  margin: 16px 0;
+  text-align: center;
+
+  &::before,&::after{
+    content: '';
+    position: absolute;
+    z-index: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: calc(50% - 16px);
+    height: 1px;
+    background-color: $color-gray-600;
+  }
+
+  &::before{
+    left: 0;
+  }
+
+  &::after{
+    right: 0;
+  }
+
+  span{
+    color: $color-gray-600;
+    font-size: 14px;
+    font-weight: 400;
+  }
+}
+
