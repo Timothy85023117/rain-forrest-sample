@@ -50,6 +50,14 @@ const routes: RouteRecordRaw[] = [
             },
           },
           {
+            path: "caselist/listdetail",
+            name: "listDetail",
+            components: {
+              default: () =>
+                import("@/views/caseManagement/caseList/DetailView.vue"),
+            },
+          },
+          {
             //建單主頁
             path: "case-create-order",
             name: "caseCreateOrder",

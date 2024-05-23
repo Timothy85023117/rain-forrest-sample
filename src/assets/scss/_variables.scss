@@ -45,3 +45,48 @@ $button-border-radius: 4px;
 $input-height: 40px;
 $input-border-radius: 4px;
 
+/* typography */
+h1,
+.text-title-large {
+  font-size: 28px;
+  font-weight: 500;
+}
+
+h2,
+.text-pop-title {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+h3,
+.text-table-title {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.text-title {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+p,
+.text-body {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+.text-subtitle {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.text-describe {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.text-mark {
+  font-size: 12px;
+  font-weight: 400;
+}
+

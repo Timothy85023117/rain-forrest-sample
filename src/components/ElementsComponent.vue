@@ -143,6 +143,14 @@
   <h1>Input</h1>
   <section>
     <el-form label-position="top">
+      <el-form-item label="Activity form">
+        <el-input v-model="input" type="textarea" />
+      </el-form-item>
+    </el-form>
+  </section>
+  <h1>Input</h1>
+  <section>
+    <el-form label-position="top">
       <el-form-item label="Title" required>
         <el-input v-model="input" style="width: 100%" />
       </el-form-item>

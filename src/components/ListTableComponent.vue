@@ -1,5 +1,9 @@
 <template>
-  <el-table :data="tableData" style="width: 100%">
+  <el-table
+    :data="tableData"
+    style="width: 100%"
+    @row-click="handleGotoDetail()"
+  >
     <el-table-column label="平台流水編號" width="110">
       <template #default="scope">
         <div style="display: flex; align-items: center">
@@ -43,7 +47,7 @@
       </template>
     </el-table-column>
     <el-table-column label="操作" width="100">
-      <template #default="">
+      <template #default="scope">
         <div class="flex items-center">
           <el-icon class="icon-view icon">
             <svg
@@ -83,7 +87,10 @@
               />
             </svg>
           </el-icon>
-          <el-icon class="icon-delete icon">
+          <el-icon
+            class="icon-delete icon"
+            @click="deleteItem($event, scope.$index, scope.row)"
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="16"
@@ -132,8 +139,7 @@
           class="sm-size"
           size="small"
           type="primary"
-          @click="handleDelete(scope.$index, scope.row)"
-          disabled
+          @click="openModel($event, scope.$index, scope.row)"
         >
           指派
         </el-button>
@@ -141,10 +147,11 @@
     </el-table-column>
   </el-table>
   <div class="pagination-block">
+    <!-- pager-count僅能設定 5~21之間的奇數 -->
     <el-pagination
       v-model:current-page="currentPage2"
       v-model:page-size="pageSize2"
-      :pager-count="4"
+      :pager-count="7"
       :page-sizes="[10, 50, 100, 200]"
       :small="small"
       :disabled="disabled"
@@ -153,6 +160,8 @@
       :total="50"
     />
   </div>
+  <dialogSingleFormModal />
+  <dialogPureTextModal />
 </template>
 <script lang="ts">
 export default {
@@ -161,6 +170,14 @@ export default {
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";
+import dialogSingleFormModal from "@/components/modal/dialogSingleFormModal.vue";
+import dialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
+
+import { useModalStatusStore } from "@/stores/modal-status";
+
+import { useRouter } from "vue-router";
+const store = useModalStatusStore();
+const router = useRouter();
 
 interface User {
   no: string;
@@ -173,8 +190,20 @@ interface User {
   state: string;
 }
 
-const handleDelete = (index: number, row: User) => {
-  console.log(index, row);
+const handleGotoDetail = () => {
+  router.push({
+    name: "listDetail",
+  });
+};
+const openModel = ($event: any, index: number, row: User) => {
+  $event.stopImmediatePropagation();
+  store.openDialogSingleFormModal();
+  console.log("openModel", index, row);
+};
+const deleteItem = ($event: any, index: number, row: User) => {
+  $event.stopImmediatePropagation();
+  store.openDialogPureTextModal();
+  console.log("openModel", index, row);
 };
 
 const tableData: User[] = [
