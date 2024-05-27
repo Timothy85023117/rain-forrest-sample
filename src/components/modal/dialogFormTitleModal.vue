@@ -54,14 +54,12 @@
       <div class="dialog-footer flex justify-center">
         <el-button
           size="large"
-          class="fix-width"
           @click="store.closeDialogFormTitleModal"
           >取消</el-button
         >
         <el-button
           size="large"
           type="primary"
-          class="fix-width"
           @click="store.closeDialogFormTitleModal"
         >
           確認
@@ -70,7 +68,11 @@
     </template>
   </el-dialog>
 </template>
-
+<script lang="ts">
+export default {
+  name: "DialogFormTitleModal",
+};
+</script>
 <script setup lang="ts">
 import { ref } from "vue";
 import { storeToRefs } from "pinia";

@@ -85,7 +85,7 @@
     <el-button>重置條件</el-button>
     <el-button type="primary">查詢</el-button>
   </div>
-  <hr class="mt-8" />
+  <hr class="mt-8 mb-8" />
 </template>
 <script lang="ts">
 export default {

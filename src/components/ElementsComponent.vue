@@ -469,16 +469,12 @@
       </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
-          <el-button
-            size="large"
-            class="fix-width"
-            @click="dialogPureTextTitle = false"
+          <el-button size="large" @click="dialogPureTextTitle = false"
             >取消</el-button
           >
           <el-button
             size="large"
             type="primary"
-            class="fix-width"
             @click="dialogPureTextTitle = false"
           >
             確認
@@ -526,7 +522,6 @@
           <el-button
             size="large"
             type="primary"
-            class="fix-width"
             @click="dialogSingleFormTitle = false"
           >
             確認
@@ -587,16 +582,12 @@
       </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
-          <el-button
-            size="large"
-            class="fix-width"
-            @click="dialogFormTitle = false"
+          <el-button size="large" @click="dialogFormTitle = false"
             >取消</el-button
           >
           <el-button
             size="large"
             type="primary"
-            class="fix-width"
             @click="dialogFormTitle = false"
           >
             確認
@@ -667,7 +658,6 @@
           <el-button
             size="large"
             type="primary"
-            class="fix-width"
             @click="dialogChoseFormTitle = false"
           >
             確認
@@ -716,9 +706,7 @@
       </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
-          <el-button size="large" class="fix-width" @click="dialogTable = false"
-            >取消</el-button
-          >
+          <el-button size="large" @click="dialogTable = false">取消</el-button>
         </div>
       </template>
     </el-dialog>
@@ -729,16 +717,12 @@
       </div>
       <template #footer>
         <div class="dialog-footer flex justify-center">
-          <el-button
-            size="large"
-            class="fix-width"
-            @click="dialogPureText = false"
+          <el-button size="large" @click="dialogPureText = false"
             >取消</el-button
           >
           <el-button
             size="large"
             type="primary"
-            class="fix-width"
             @click="dialogPureText = false"
           >
             確認

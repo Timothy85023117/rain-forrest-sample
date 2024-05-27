@@ -201,9 +201,10 @@ body {
   font-size: 12px;
   outline: none;
   font-weight: 400;
+  min-width: 110px;
 
-  &.fix-width{
-     width: 110px;
+  &.auto-width{
+    min-width: auto;
   }
 
   &+.el-button{
@@ -261,7 +262,49 @@ body {
   }
 }
 
+/* ======== el-collapse ======== */
+.el-collapse{
+  --el-collapse-border-color: transparent;
+  --el-collapse-header-height: 66px;
+
+  .card-title {
+    margin-bottom: 0;
+  }
+}
+
+.el-collapse-item__content{
+  padding-bottom: 20px;
+}
+
+.el-collapse-item__arrow{
+  font-size: 24px;
+  transform: rotate(90deg);
+
+  &.is-active{
+    transform: rotate(-90deg);
+  }
+
+  svg{
+    path{
+      fill: $color-green-600;
+    }
+  }
+}
+
+.collapse-wrapper {
+  padding: 0 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 0 16px 0 rgb(217 217 214 / 50%);
+}
+
 /* ======== el-tabs ======== */
+.el-tab-pane{
+  background-color: $color-white;
+  border-radius: 0 12px 12px;
+  padding: 20px;
+}
+
 .el-tabs--card{
   .el-tabs__header{
     margin: 0;
@@ -484,7 +527,7 @@ body {
 .el-table{
   --el-table-row-hover-bg-color: transparent; //表格列 hover 顏色
 
-  padding-top: 32px;
+  // padding-top: 32px;
 
   .el-table__header{
     th{
@@ -494,19 +537,52 @@ body {
         font-weight: normal;
       }
     }
+
+    .el-checkbox__input{
+      display: none;
+    }
   }
 
   .el-table__cell{
     padding: 13px 0;
   }
+
+  .cell{
+    padding: 0 8px;
+
+    .el-checkbox__input{
+      margin: 5px;
+    }
+  }
+
 }
 
 /* ======== el-breadcrumb ======== */
-// .el-breadcrumb,
-// .el-breadcrumb__inner {
-//   font-size: 16px;
-//   color: $color-gray-700;
-// }
+.el-breadcrumb__item{
+  &:last-child {
+    .el-breadcrumb__inner{
+      color: $color-green-600;
+      font-weight: bold;
+
+      &.is-link{
+        &:hover{
+          color: $color-green-600;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+}
+
+.el-breadcrumb__inner{
+  font-size: 16px;
+  color: $color-gray-700;
+
+  &.is-link{
+    color: $color-gray-700;
+    font-weight: normal;
+  }
+}
 
 /* ======== el-Message(toast) ======== */
 .el-message{

@@ -136,7 +136,7 @@
       <template #default="scope">
         <!-- 若編輯icon是黃色(notice-color)，指派按鈕需要disabled -->
         <el-button
-          class="sm-size"
+          class="sm-size auto-width"
           size="small"
           type="primary"
           @click="openModel($event, scope.$index, scope.row)"
@@ -160,8 +160,8 @@
       :total="50"
     />
   </div>
-  <dialogSingleFormModal />
-  <dialogPureTextModal />
+  <DialogSingleFormModal />
+  <DialogPureTextModal />
 </template>
 <script lang="ts">
 export default {
@@ -170,8 +170,8 @@ export default {
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";
-import dialogSingleFormModal from "@/components/modal/dialogSingleFormModal.vue";
-import dialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
+import DialogSingleFormModal from "@/components/modal/DialogSingleFormModal.vue";
+import DialogPureTextModal from "@/components/modal/DialogPureTextModal.vue";
 
 import { useModalStatusStore } from "@/stores/modal-status";
 

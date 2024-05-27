@@ -23,33 +23,3 @@ export default {
 <script lang="ts" setup>
 import { ArrowRight } from "@element-plus/icons-vue";
 </script>
-<style lang="scss" scoped>
-.card {
-  padding: 8px 16px;
-}
-
-.el-breadcrumb,
-.el-breadcrumb__inner {
-  font-size: 16px;
-  color: $color-gray-700;
-}
-
-.el-breadcrumb {
-  &:last-child {
-    :deep(.el-breadcrumb__inner) {
-      cursor: pointer;
-
-      &:hover {
-        color: rgba($color: $color-green-600, $alpha: 80%);
-      }
-    }
-  }
-}
-
-:deep(.el-breadcrumb__inner) {
-  &.is-link {
-    color: $color-green-600;
-    font-weight: normal;
-  }
-}
-</style>

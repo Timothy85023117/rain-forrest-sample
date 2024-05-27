@@ -62,7 +62,6 @@
         <el-button
           size="large"
           type="primary"
-          class="fix-width"
           @click="store.closeDialogChoseFormTitleModal"
         >
           確認
@@ -71,7 +70,11 @@
     </template>
   </el-dialog>
 </template>
-
+<script lang="ts">
+export default {
+  name: "DialogChoseFormTitleModal",
+};
+</script>
 <script setup lang="ts">
 import { ref } from "vue";
 import { storeToRefs } from "pinia";

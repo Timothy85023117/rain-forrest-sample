@@ -5,16 +5,12 @@
     </div>
     <template #footer>
       <div class="dialog-footer flex justify-center">
-        <el-button
-          size="large"
-          class="fix-width"
-          @click="store.closeDialogPureTextModal"
+        <el-button size="large" @click="store.closeDialogPureTextModal"
           >取消</el-button
         >
         <el-button
           size="large"
           type="primary"
-          class="fix-width"
           @click="store.closeDialogPureTextModal"
         >
           確認
@@ -23,7 +19,11 @@
     </template>
   </el-dialog>
 </template>
-
+<script lang="ts">
+export default {
+  name: "DialogPureTextModal",
+};
+</script>
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useModalStatusStore } from "@/stores/modal-status";

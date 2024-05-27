@@ -1,5 +1,9 @@
 <template>
-  <el-dialog v-model="dialogTable" title="使用者詳細資訊" :append-to-body="true">
+  <el-dialog
+    v-model="dialogTable"
+    title="使用者詳細資訊"
+    :append-to-body="true"
+  >
     <div class="dialog-content">
       <ul class="table-pure-table">
         <li>
@@ -40,17 +44,18 @@
     </div>
     <template #footer>
       <div class="dialog-footer flex justify-center">
-        <el-button
-          size="large"
-          class="fix-width"
-          @click="store.closeDialogTableModal"
+        <el-button size="large" @click="store.closeDialogTableModal"
           >取消</el-button
         >
       </div>
     </template>
   </el-dialog>
 </template>
-
+<script lang="ts">
+export default {
+  name: "DialogTableModal",
+};
+</script>
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
 import { useModalStatusStore } from "@/stores/modal-status";

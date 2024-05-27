@@ -1,5 +1,9 @@
 <template>
-  <el-dialog v-model="dialogSingleFormTitle" title="指派" :append-to-body="true">
+  <el-dialog
+    v-model="dialogSingleFormTitle"
+    title="指派"
+    :append-to-body="true"
+  >
     <div class="dialog-content">
       <el-form label-position="top" class="grid gap-4 grid-cols-3">
         <el-form-item label="指派單位" class="mb-0">
@@ -39,7 +43,6 @@
         <el-button
           size="large"
           type="primary"
-          class="fix-width"
           @click="store.closeDialogSingleFormModal"
         >
           確認
@@ -48,7 +51,11 @@
     </template>
   </el-dialog>
 </template>
-
+<script lang="ts">
+export default {
+  name: "DialogSingleFormModal",
+};
+</script>
 <script setup lang="ts">
 import { ref } from "vue";
 import { storeToRefs } from "pinia";
