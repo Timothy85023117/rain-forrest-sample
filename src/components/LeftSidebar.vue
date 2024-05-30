@@ -7,8 +7,6 @@
           class="el-menu-vertical h-full"
           default-active="1-1"
           :collapse="isCollapse"
-          @open="handleOpen"
-          @close="handleClose"
         >
           <el-sub-menu index="1">
             <template #title>
@@ -415,12 +413,5 @@ import { storeToRefs } from "pinia";
 const store = useMenuStatusStore();
 const { collapse } = storeToRefs(store);
 const isCollapse = collapse;
-
-const handleOpen = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
-const handleClose = (key: string, keyPath: string[]) => {
-  console.log(key, keyPath);
-};
 </script>
 <!-- <style lang="scss" scoped></style> -->

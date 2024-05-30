@@ -38,7 +38,7 @@
           </svg>
         </div>
         <router-link class="logo" :to="{ name: 'caseOverview' }">
-          <img src="../assets/images/Logo-Horizonal.svg" alt="logo" />
+          <img src="/src/assets/images/menu-logo.svg" alt="logo" />
         </router-link>
       </div>
       <div class="flex items-center mr-4">
@@ -54,10 +54,6 @@
             </el-dropdown-menu>
           </template>
         </el-dropdown>
-        <!-- <span class="gear mr-2">
-          <img src="@/assets/images/navbar-setting-fill.svg" alt="" />
-        </span>
-        <span class="text-sm ml-1">{{ userName }}</span> -->
       </div>
     </div>
   </div>

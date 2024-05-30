@@ -3,7 +3,7 @@
     <el-tabs
       v-model="activeName"
       type="card"
-      class="caseClassification-tabs"
+      class="caseClassification-tabs main-tabs"
       @tab-click="handleClick"
     >
       <el-tab-pane label="人員管理" name="first">
@@ -19,35 +19,35 @@
         <hr class="mt-8 mb-8" />
         <!-- 按鈕 -->
         <div class="flex justify-end mt-8 mb-4">
-          <el-button size="large" type="primary" class="mb-4">新增</el-button>
+          <el-button size="large" type="primary">新增</el-button>
         </div>
         <!-- 表格 -->
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column label="ID" width="100">
+          <el-table-column label="名稱" width="120">
             <template #default="scope">
               <div style="display: flex; align-items: center">
-                <span>{{ scope.row.id }}</span>
+                <span>{{ scope.row.name }}</span>
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="名稱">
+          <el-table-column label="使用者帳號" width="180">
             <template #default="scope">
-              <span>{{ scope.row.name }}</span>
+              <span>{{ scope.row.account }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="排序" width="60">
+          <el-table-column label="電子信箱" width="250">
             <template #default="scope">
-              <span>{{ scope.row.index }}</span>
+              <span>{{ scope.row.email }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="狀態" width="100">
+          <el-table-column label="角色" width="100">
+            <template #default="scope">
+              <span class="truncate">{{ scope.row.role }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="狀態" width="60">
             <template #default="scope">
               <span>{{ scope.row.state }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="建立者" width="120">
-            <template #default="scope">
-              <span>{{ scope.row.createOwner }}</span>
             </template>
           </el-table-column>
           <el-table-column label="建立日期">
@@ -55,14 +55,9 @@
               <span>{{ scope.row.createDate }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="修改者" width="120">
+          <el-table-column label="更新日期">
             <template #default="scope">
-              <span>{{ scope.row.editOwner }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="修改日期">
-            <template #default="scope">
-              <span>{{ scope.row.editDate }}</span>
+              <span>{{ scope.row.updateDate }}</span>
             </template>
           </el-table-column>
           <el-table-column label="操作" width="100">
@@ -183,115 +178,77 @@ const handleClick = (tab: TabsPaneContext, event: Event) => {
 const input = ref("");
 
 interface User {
-  id: string;
   name: string;
-  index: string;
+  account: string;
+  email: string;
+  role: string;
   state: string;
-  createOwner: string;
   createDate: string;
-  editOwner: string;
-  editDate: string;
+  updateDate: string;
 }
 const tableData: User[] = [
   {
-    id: "1",
-    name: "訂單問題",
-    index: "1",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "2",
-    name: "訂單問題",
-    index: "2",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "3",
-    name: "訂單問題",
-    index: "3",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "4",
-    name: "訂單問題",
-    index: "4",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "5",
-    name: "訂單問題",
-    index: "5",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "6",
-    name: "訂單問題",
-    index: "6",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
   {
-    id: "7",
-    name: "訂單問題",
-    index: "7",
+    name: "任海宏 (Tom)",
+    account: "0256_Tom@rfr.com.tw",
+    email: "tom_ren@rainforestretail.com.tw",
+    role: "系統管理員",
     state: "啟用",
-    createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "8",
-    name: "訂單問題",
-    index: "8",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "9",
-    name: "訂單問題",
-    index: "9",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "10",
-    name: "訂單問題",
-    index: "10",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    updateDate: "2024/04/25 13:20:10",
   },
 ];
 const deleteItem = ($event: any, index: number, row: User) => {

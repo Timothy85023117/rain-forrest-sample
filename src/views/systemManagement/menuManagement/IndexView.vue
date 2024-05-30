@@ -3,91 +3,66 @@
     <el-tabs
       v-model="activeName"
       type="card"
-      class="caseClassification-tabs"
+      class="caseClassification-tabs main-tabs"
       @tab-click="handleClick"
     >
       <el-tab-pane label="目錄" name="first">
         <div class="flex">
+          <el-select
+            v-model="value"
+            placeholder="選擇父層"
+            size="large"
+            style="width: 262px"
+            class="mr-4"
+          >
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
           <el-input
             v-model="input"
             style="width: 262px"
             size="large"
-            placeholder="輸入關鍵字"
+            placeholder="模糊搜尋名稱"
           />
           <el-button size="large" type="primary" class="ml-4">查詢</el-button>
         </div>
         <hr class="mt-8 mb-8" />
         <!-- 按鈕 -->
         <div class="flex justify-end mt-8 mb-4">
-          <el-button size="large" type="primary" class="mb-4">新增</el-button>
+          <el-button size="large" type="primary">新增</el-button>
         </div>
         <!-- 表格 -->
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column label="ID" width="100">
+          <el-table-column label="選單名稱">
             <template #default="scope">
-              <div style="display: flex; align-items: center">
-                <span>{{ scope.row.id }}</span>
+              <span>{{ scope.row.meunName }}</span>
+            </template>
+          </el-table-column>
+          <el-table-column label="圖示">
+            <template #default="scope">
+              <div class="flex items-center">
+                <div class="show-icon">
+                  <img
+                    :src="`/src/assets/images/${scope.row.meunIcon}.svg`"
+                    alt=""
+                  />
+                </div>
+                <span>{{ scope.row.meunIcon }}</span>
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="名稱">
+          <el-table-column label="排序">
             <template #default="scope">
-              <span>{{ scope.row.name }}</span>
+              <span>{{ scope.row.meunIndex }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="排序" width="60">
-            <template #default="scope">
-              <span>{{ scope.row.index }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="狀態" width="100">
-            <template #default="scope">
-              <span>{{ scope.row.state }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="建立者" width="120">
-            <template #default="scope">
-              <span>{{ scope.row.createOwner }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="建立日期">
-            <template #default="scope">
-              <span>{{ scope.row.createDate }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="修改者" width="120">
-            <template #default="scope">
-              <span>{{ scope.row.editOwner }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="修改日期">
-            <template #default="scope">
-              <span>{{ scope.row.editDate }}</span>
-            </template>
-          </el-table-column>
-          <el-table-column label="操作" width="100">
+          <el-table-column label="操作" width="200">
             <template #default="scope">
               <div class="flex items-center">
-                <el-icon class="icon-view icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M8 10.1838C9.32246 10.1838 10.3945 9.11176 10.3945 7.7893C10.3945 6.46684 9.32246 5.39478 8 5.39478C6.67753 5.39478 5.60547 6.46684 5.60547 7.7893C5.60547 9.11176 6.67753 10.1838 8 10.1838Z"
-                      stroke="#76C144"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M14.5355 6.9382C14.8452 7.31494 15 7.50251 15 7.78905C15 8.0756 14.8452 8.26317 14.5355 8.63991C13.4021 10.016 10.9022 12.5781 8 12.5781C5.09783 12.5781 2.59795 10.016 1.46454 8.63991C1.15485 8.26317 1 8.0756 1 7.78905C1 7.50251 1.15485 7.31494 1.46454 6.9382C2.59795 5.56214 5.09783 3 8 3C10.9022 3 13.4021 5.56214 14.5355 6.9382Z"
-                      stroke="#76C144"
-                      stroke-width="1.5"
-                    />
-                  </svg>
-                </el-icon>
                 <!-- 編輯到一半可以暫存，但icon會變成黃色(notice-color)，且指派按鈕需要disabled -->
                 <el-icon class="icon-edit icon notice-color">
                   <svg
@@ -180,122 +155,50 @@ const activeName = ref("first");
 const handleClick = (tab: TabsPaneContext, event: Event) => {
   console.log(tab, event);
 };
+const value = ref("");
 
-const input = ref("");
-
-interface User {
-  id: string;
-  name: string;
-  index: string;
-  state: string;
-  createOwner: string;
-  createDate: string;
-  editOwner: string;
-  editDate: string;
-}
-const tableData: User[] = [
+const options = [
   {
-    id: "1",
-    name: "訂單問題",
-    index: "1",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    value: "Option1",
+    label: "Option1",
   },
   {
-    id: "2",
-    name: "訂單問題",
-    index: "2",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    value: "Option2",
+    label: "Option2",
   },
   {
-    id: "3",
-    name: "訂單問題",
-    index: "3",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    value: "Option3",
+    label: "Option3",
   },
   {
-    id: "4",
-    name: "訂單問題",
-    index: "4",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    value: "Option4",
+    label: "Option4",
   },
   {
-    id: "5",
-    name: "訂單問題",
-    index: "5",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "6",
-    name: "訂單問題",
-    index: "6",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "7",
-    name: "訂單問題",
-    index: "7",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "8",
-    name: "訂單問題",
-    index: "8",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "9",
-    name: "訂單問題",
-    index: "9",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
-  },
-  {
-    id: "10",
-    name: "訂單問題",
-    index: "10",
-    state: "啟用",
-    createOwner: "0256_Tom",
-    createDate: "2024/04/22 13:20:10",
-    editOwner: "0256_Tom",
-    editDate: "2024/04/25 13:20:10",
+    value: "Option5",
+    label: "Option5",
   },
 ];
-const deleteItem = ($event: any, index: number, row: User) => {
+const input = ref("");
+
+interface MeunList {
+  meunName: string;
+  meunIcon: string;
+  meunIndex: string;
+}
+const tableData: MeunList[] = [
+  {
+    meunName: "案件管理-案件總覽",
+    meunIcon: "Ic-CaseManagement-Default",
+    meunIndex: "1",
+  },
+  {
+    meunName: "系統管理",
+    meunIcon: "Ic-SystemManage-Default",
+    meunIndex: "1",
+  },
+];
+const deleteItem = ($event: any, index: number, row: MeunList) => {
   $event.stopImmediatePropagation();
   // store.openDialogPureTextModal();
   console.log("openModel", index, row);
@@ -307,4 +210,14 @@ const small = ref(false);
 const background = ref(true);
 const disabled = ref(false);
 </script>
-<!-- <style lang="scss" scoped></style> -->
+<style lang="scss" scoped>
+.show-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+
+  img {
+    width: 100%;
+  }
+}
+</style>

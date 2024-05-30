@@ -3,11 +3,11 @@
     <el-tabs
       v-model="activeName"
       type="card"
-      class="caseClassification-tabs"
+      class="caseClassification-tabs main-tabs"
       @tab-click="handleClick"
     >
       <el-tab-pane label="單位管理" name="first">
-        <div class="flex">
+        <!-- <div class="flex">
           <el-input
             v-model="input"
             style="width: 262px"
@@ -15,32 +15,33 @@
             placeholder="輸入關鍵字"
           />
           <el-button size="large" type="primary" class="ml-4">查詢</el-button>
-        </div>
-        <hr class="mt-8 mb-8" />
+        </div> -->
+        <!-- <hr class="mt-8 mb-8" /> -->
+        <FiliterInputParameterManagementComponent />
         <!-- 按鈕 -->
         <div class="flex justify-end mt-8 mb-4">
-          <el-button size="large" type="primary" class="mb-4">新增</el-button>
+          <el-button size="large" type="primary">新增</el-button>
         </div>
         <!-- 表格 -->
         <el-table :data="tableData" style="width: 100%">
-          <el-table-column label="ID" width="100">
+          <el-table-column label="ID" width="80">
             <template #default="scope">
               <div style="display: flex; align-items: center">
                 <span>{{ scope.row.id }}</span>
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="名稱">
+          <el-table-column label="單位">
             <template #default="scope">
-              <span>{{ scope.row.name }}</span>
+              <span>{{ scope.row.unitName }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="排序" width="60">
+          <el-table-column label="信箱" width="160">
             <template #default="scope">
-              <span>{{ scope.row.index }}</span>
+              <span>{{ scope.row.email }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="狀態" width="100">
+          <el-table-column label="狀態" width="80">
             <template #default="scope">
               <span>{{ scope.row.state }}</span>
             </template>
@@ -65,31 +66,11 @@
               <span>{{ scope.row.editDate }}</span>
             </template>
           </el-table-column>
-          <el-table-column label="操作" width="100">
+          <el-table-column label="操作" width="80">
             <template #default="scope">
               <div class="flex items-center">
-                <el-icon class="icon-view icon">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M8 10.1838C9.32246 10.1838 10.3945 9.11176 10.3945 7.7893C10.3945 6.46684 9.32246 5.39478 8 5.39478C6.67753 5.39478 5.60547 6.46684 5.60547 7.7893C5.60547 9.11176 6.67753 10.1838 8 10.1838Z"
-                      stroke="#76C144"
-                      stroke-width="1.5"
-                    />
-                    <path
-                      d="M14.5355 6.9382C14.8452 7.31494 15 7.50251 15 7.78905C15 8.0756 14.8452 8.26317 14.5355 8.63991C13.4021 10.016 10.9022 12.5781 8 12.5781C5.09783 12.5781 2.59795 10.016 1.46454 8.63991C1.15485 8.26317 1 8.0756 1 7.78905C1 7.50251 1.15485 7.31494 1.46454 6.9382C2.59795 5.56214 5.09783 3 8 3C10.9022 3 13.4021 5.56214 14.5355 6.9382Z"
-                      stroke="#76C144"
-                      stroke-width="1.5"
-                    />
-                  </svg>
-                </el-icon>
                 <!-- 編輯到一半可以暫存，但icon會變成黃色(notice-color)，且指派按鈕需要disabled -->
-                <el-icon class="icon-edit icon notice-color">
+                <el-icon class="icon-edit icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
@@ -108,7 +89,7 @@
                 </el-icon>
                 <el-icon
                   class="icon-delete icon"
-                  @click="deleteItem($event, scope.$index, scope.row)"
+                  @click="deleteItem($event, scope.$email, scope.row)"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -174,6 +155,7 @@
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
+import FiliterInputParameterManagementComponent from "@/components/FiliterInputParameterManagementComponent.vue";
 import type { TabsPaneContext } from "element-plus";
 
 const activeName = ref("first");
@@ -185,8 +167,8 @@ const input = ref("");
 
 interface User {
   id: string;
-  name: string;
-  index: string;
+  unitName: string;
+  email: string;
   state: string;
   createOwner: string;
   createDate: string;
@@ -196,8 +178,8 @@ interface User {
 const tableData: User[] = [
   {
     id: "1",
-    name: "訂單問題",
-    index: "1",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -206,8 +188,8 @@ const tableData: User[] = [
   },
   {
     id: "2",
-    name: "訂單問題",
-    index: "2",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -216,8 +198,8 @@ const tableData: User[] = [
   },
   {
     id: "3",
-    name: "訂單問題",
-    index: "3",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -226,8 +208,8 @@ const tableData: User[] = [
   },
   {
     id: "4",
-    name: "訂單問題",
-    index: "4",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -236,8 +218,8 @@ const tableData: User[] = [
   },
   {
     id: "5",
-    name: "訂單問題",
-    index: "5",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -246,8 +228,8 @@ const tableData: User[] = [
   },
   {
     id: "6",
-    name: "訂單問題",
-    index: "6",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -256,8 +238,8 @@ const tableData: User[] = [
   },
   {
     id: "7",
-    name: "訂單問題",
-    index: "7",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -266,8 +248,8 @@ const tableData: User[] = [
   },
   {
     id: "8",
-    name: "訂單問題",
-    index: "8",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -276,8 +258,8 @@ const tableData: User[] = [
   },
   {
     id: "9",
-    name: "訂單問題",
-    index: "9",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -286,8 +268,8 @@ const tableData: User[] = [
   },
   {
     id: "10",
-    name: "訂單問題",
-    index: "10",
+    unitName: "客服組",
+    email: "Bo@rfr.com.tw",
     state: "啟用",
     createOwner: "0256_Tom",
     createDate: "2024/04/22 13:20:10",
@@ -295,10 +277,10 @@ const tableData: User[] = [
     editDate: "2024/04/25 13:20:10",
   },
 ];
-const deleteItem = ($event: any, index: number, row: User) => {
+const deleteItem = ($event: any, email: number, row: User) => {
   $event.stopImmediatePropagation();
   // store.openDialogPureTextModal();
-  console.log("openModel", index, row);
+  console.log("openModel", email, row);
 };
 
 const currentPage2 = ref(1); //目前頁數

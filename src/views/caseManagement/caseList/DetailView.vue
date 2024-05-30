@@ -12,10 +12,10 @@
         <el-form-item label="通路案件編號">
           <el-input v-model="input2" size="large" disabled />
         </el-form-item>
-        <el-form-item label="問題分類大項">
+        <el-form-item label="案件分類">
           <el-select
             v-model="value1"
-            placeholder="問題分類大項"
+            placeholder="案件分類"
             size="large"
             disabled
           >
@@ -27,10 +27,10 @@
             />
           </el-select>
         </el-form-item>
-        <el-form-item label="問題分類細項">
+        <el-form-item label="分類項目">
           <el-select
             v-model="value2"
-            placeholder="問題分類細項"
+            placeholder="分類項目"
             size="large"
             disabled
           >
@@ -115,7 +115,7 @@
           <el-form-item label="平台">
             <el-select
               v-model="value1"
-              placeholder="問題分類大項"
+              placeholder="平台"
               size="large"
               disabled
             >
@@ -130,7 +130,7 @@
           <el-form-item label="品牌">
             <el-select
               v-model="value1"
-              placeholder="問題分類大項"
+              placeholder="品牌"
               size="large"
               disabled
             >
@@ -207,8 +207,50 @@
             </template>
           </el-table-column>
           <el-table-column label="操作" width="100">
-            <template #default="">
+            <template #default="scope">
               <div class="flex items-center text-base">
+                <el-icon
+                  class="icon-delete icon"
+                  @click="deleteItem($event, scope.$email, scope.row)"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                  >
+                    <path
+                      d="M3 4H13L12.09 13.0995C12.0389 13.6107 11.6088 14 11.095 14H4.90499C4.39124 14 3.96107 13.6107 3.90995 13.0995L3 4Z"
+                      stroke="#76C144"
+                      stroke-width="1.5"
+                    />
+                    <path
+                      d="M2 4H14"
+                      stroke="#76C144"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M6 2H10"
+                      stroke="#76C144"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M6.5 7V11"
+                      stroke="#76C144"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                    <path
+                      d="M9.5 7V11"
+                      stroke="#76C144"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                </el-icon>
                 <el-icon class="icon-download icon">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -259,7 +301,7 @@
         <h3>客服回覆</h3>
       </div>
       <el-form label-position="top" class="mt-4">
-        <el-form-item label="客服回覆">
+        <el-form-item label="客服回覆內容">
           <el-input
             v-model="textareaValue2"
             type="textarea"
@@ -284,7 +326,7 @@
 import { ref } from "vue";
 import { useModalStatusStore } from "@/stores/modal-status";
 import CollapseComponent from "@/components/CollapseComponent.vue";
-import DialogPureTextModal from "@/components/modal/DialogPureTextModal.vue";
+import DialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
 
 const store = useModalStatusStore();
 

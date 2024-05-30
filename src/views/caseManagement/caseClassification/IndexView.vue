@@ -3,10 +3,10 @@
     <el-tabs
       v-model="activeName"
       type="card"
-      class="caseClassification-tabs"
+      class="caseClassification-tabs main-tabs"
       @tab-click="handleClick"
     >
-      <el-tab-pane label="分類大項" name="first">
+      <el-tab-pane label="案件分類" name="first">
         <div class="flex">
           <el-input
             v-model="input"
@@ -19,7 +19,7 @@
         <hr class="mt-8 mb-8" />
         <!-- 按鈕 -->
         <div class="flex justify-end mt-8 mb-4">
-          <el-button size="large" type="primary" class="mb-4">新增</el-button>
+          <el-button size="large" type="primary">新增</el-button>
         </div>
         <!-- 表格 -->
         <el-table :data="tableData" style="width: 100%">
@@ -105,7 +105,7 @@
           />
         </div>
       </el-tab-pane>
-      <el-tab-pane label="分類細項" name="second">分類細項</el-tab-pane>
+      <el-tab-pane label="分類項目" name="second">分類項目</el-tab-pane>
     </el-tabs>
   </div>
 </template>

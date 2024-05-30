@@ -13,7 +13,8 @@
   --el-color-danger: #ED704E;
   --el-color-primary:#76C144;
   --el-fill-color-light: #E9FCDD; //下拉選單的hover背景色
-  --el-menu-base-level-padding: 16px; //選單的基本padding
+  --el-menu-base-level-padding: 32px; //選單的基本padding
+  --el-border-color: #BFC0C0;// brd color
   --el-disabled-bg-color: #F4F6F7;
   --el-disabled-border-color: #C8C9C7;
 }
@@ -51,12 +52,12 @@ body {
   inset: 60px 0 0 240px;
   box-sizing: border-box;
   min-width: 990px;
-  padding: 0 20px !important;
+  padding: 20px 32px 0 !important;
   overflow: auto;
   transition: all 0.2s;
 
   &.--collapse{
-    inset: 60px 0 0 64px;
+    inset: 60px 0 0 88px;
   }
 
   &::-webkit-scrollbar {
@@ -71,7 +72,7 @@ body {
 }
 
 .wrap-min-height{
-  min-height: calc(100vh - 188px);
+  min-height: calc(100vh - 228px);
 }
 
 .card {
@@ -83,6 +84,12 @@ body {
 
   &+.card{
     margin-top: 20px;
+  }
+}
+
+.el-icon{
+  &+.el-icon{
+    margin-left: 8px;
   }
 }
 
@@ -99,7 +106,17 @@ body {
   --el-input-hover-border-color: #BFC0C0;//hover brd color
 }
 
+
+
 /* ======== el-select ======== */
+.el-select__caret{
+  svg{
+    path{
+      fill: #666464;
+    }
+  }
+}
+
 .el-popper__arrow{
   display: none;
 }
@@ -124,7 +141,29 @@ body {
 
 /* ======== el-date ======== */
 .el-date-editor{
+  --el-input-border-color: #BFC0C0;// brd color
   --el-date-editor-width: 100%;
+
+  .el-range__icon{
+    position: relative;
+    z-index: 0;
+
+    svg{
+      display: none;
+    }
+
+    &::before{
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 16px;
+      height: 16px;
+      background: url('@/assets/images/Ic-Datepicker.svg') center no-repeat;
+      background-size: cover;
+    }
+  }
 }
 
 .el-range-editor{
@@ -144,27 +183,34 @@ body {
   --el-checkbox-disabled-border-color: #D9D9D6;
 }
 
-/* ======== el-radio ======== */
-.el-radio {
-  &.el-radio--large{
-    .el-radio__label{
-      padding-left: 13px;
-      color: $color-black;
-      font-weight: 400;
-    }
+.is-error{
+  .el-checkbox__inner{
+    border: 1px solid $color-orange-500;
+  }
+
+  .el-radio__inner{
+    border: 1px solid $color-orange-500;
   }
 }
 
-/* ======== el-pagination ======== */
-.el-pagination__sizes{
-  order: 10;
+/* ======== el-radio ======== */
+.el-radio__label{
+  padding-left: 13px;
+  color: $color-black;
+  font-weight: 400;
 }
+
+/* ======== el-pagination ======== */
+// .el-pagination__sizes{
+//   order: 10;
+// }
 
 .el-pagination {
   padding-top: 32px;
 
   --el-pagination-button-bg-color: transparent;
   --el-pagination-border-radius: 50%;
+  --el-pagination-button-color: #666464;
 
   justify-content: center;
 
@@ -172,8 +218,8 @@ body {
     .el-pager{
       li{
         &.is-active{
-          background-color: rgba($color:#76C144, $alpha: 25%);
-          color: $color-gray-800;
+          background-color: $color-green-400;
+          color: $color-black;
           font-weight: normal;
         }
       }
@@ -303,6 +349,21 @@ body {
   background-color: $color-white;
   border-radius: 0 12px 12px;
   padding: 20px;
+}
+
+.el-tabs__header{
+  margin-bottom: 0;
+}
+
+.snd-tabs{
+  .el-tabs__item{
+    padding: 0;
+    margin: 0 20px;
+  }
+}
+
+.el-tabs__item{
+  color: $color-gray-800;
 }
 
 .el-tabs--card{
@@ -557,6 +618,12 @@ body {
 
 }
 
+.el-table__body-wrapper{
+  &:has(.el-table__empty-block){
+    display: none;
+  }
+}
+
 /* ======== el-breadcrumb ======== */
 .el-breadcrumb__item{
   &:last-child {
@@ -587,7 +654,8 @@ body {
 /* ======== el-Message(toast) ======== */
 .el-message{
   max-width: 600px;
-  width: 100%;
+  min-width: 300px;
+  // width: 100%;
   padding: 8px 16px;
 
   .el-icon{
@@ -623,6 +691,7 @@ body {
   font-size: 16px;
   font-weight: 500;
   color: $color-black;
+  line-height: 1.5;
 }
 
 .message-content{
@@ -630,6 +699,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: $color-gray-800;
+  line-height: 1.25;
 }
 // 商品中心的modal樣式
 // AlertModal,ConfirmModal 使用的樣式，用來呈現系統 alert 或 confirm 的 dialog

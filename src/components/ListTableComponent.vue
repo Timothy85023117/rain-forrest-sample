@@ -170,8 +170,8 @@ export default {
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";
-import DialogSingleFormModal from "@/components/modal/DialogSingleFormModal.vue";
-import DialogPureTextModal from "@/components/modal/DialogPureTextModal.vue";
+import DialogSingleFormModal from "@/components/modal/dialogSingleFormModal.vue";
+import DialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
 
 import { useModalStatusStore } from "@/stores/modal-status";
 
