@@ -6,12 +6,18 @@ import App from "./App.vue";
 import "./assets/scss/main.scss";
 import router from "./router";
 
+import { createVfm } from "vue-final-modal";
+import "vue-final-modal/style.css"; //vue-final-modal css
+
 import HighchartsVue from "highcharts-vue";
 
 const app = createApp(App);
+const vfm = createVfm();
+
 app.use(createPinia());
 app.use(ElementUI);
 app.use(router);
+app.use(vfm);
 
 app.use(HighchartsVue);
 router.isReady().then(() => {
