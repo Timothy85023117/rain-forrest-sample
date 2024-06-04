@@ -31,7 +31,7 @@
               </div>
             </template>
           </el-table-column>
-          <el-table-column label="單位">
+          <el-table-column label="單位" width="100">
             <template #default="scope">
               <span>{{ scope.row.unitName }}</span>
             </template>

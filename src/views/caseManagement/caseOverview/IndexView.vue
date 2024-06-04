@@ -366,7 +366,6 @@ const options = [
 
 .table-data-wrapper {
   padding: 5px;
-  background-color: aqua;
   width: 100%;
 }
 
