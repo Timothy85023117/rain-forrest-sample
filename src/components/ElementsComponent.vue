@@ -451,6 +451,8 @@
     <h1>Tag</h1>
     <section>
       <el-tag type="primary">啟用</el-tag>
+      <el-tag type="warning">私有</el-tag>
+      <el-tag type="danger">機密</el-tag>
     </section>
     <h1>Toast</h1>
     <section>
@@ -461,7 +463,7 @@
     </section>
     <h1>POPUP</h1>
     <section>
-      <el-button plain @click="store.openDialogPureTextTitleModal">
+      <el-button plain @click="dialogPureTextTitle = true">
         純文字含標題 Dialog（大）
       </el-button>
       <el-button plain @click="dialogSingleFormTitle = true">
@@ -476,18 +478,14 @@
       <el-button plain @click="dialogTable = true">
         表格 Dialog（大）
       </el-button>
-      <el-button plain @click="onBtnShowMsg"> 純文字 Dialog（小） </el-button>
-      <!-- <el-button plain @click="store.openDialogPureTextModal()">
+      <el-button plain @click="dialogCreateResource = true">
+        建立資源 Dialog（大）
+      </el-button>
+      <el-button plain @click="dialogPureText = true">
         純文字 Dialog（小）
-      </el-button> -->
+      </el-button>
 
-      <DialogPureTextTitleModal
-        title="保存確認"
-        contents="如要繼續編輯回覆內容請點選暫存，如確認內容無誤請點選確認。"
-        :subButtonFn="cancelDialog"
-        :primaryButtonFn="enterDialog"
-      />
-      <!-- <el-dialog v-model="dialogPureTextTitle" title="保存確認">
+      <el-dialog v-model="dialogPureTextTitle" title="保存確認">
         <div class="dialog-content">
           <h2 class="text-center">
             如要繼續編輯回覆內容請點選暫存，如確認內容無誤請點選確認。
@@ -507,7 +505,7 @@
             </el-button>
           </div>
         </template>
-      </el-dialog> -->
+      </el-dialog>
       <el-dialog v-model="dialogSingleFormTitle" title="指派">
         <div class="dialog-content">
           <el-form label-position="top" class="grid gap-4 grid-cols-3">
@@ -738,8 +736,46 @@
           </div>
         </template>
       </el-dialog>
-
-      <!-- <el-dialog v-model="dialogPureText" class="dialog-sm" title="">
+      <el-dialog v-model="dialogCreateResource" title="建立資源">
+        <div class="dialog-content">
+          <el-form class="single-line-form-item">
+            <el-form-item label="資源名稱" required>
+              <el-input v-model="input" style="width: 500px" size="large" />
+            </el-form-item>
+            <el-form-item label="資源路徑" required>
+              <el-input v-model="input" style="width: 500px" size="large" />
+            </el-form-item>
+            <el-form-item label="資源安全類型" required>
+              <el-select
+                v-model="valueSelect"
+                filterable
+                placeholder="請選擇資源安全類型"
+                size="large"
+                style="width: 262px"
+              >
+                <el-option
+                  v-for="item in options"
+                  :key="item.value"
+                  :label="item.label"
+                  :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+          </el-form>
+        </div>
+        <template #footer>
+          <div class="dialog-footer flex justify-center">
+            <el-button
+              size="large"
+              type="primary"
+              @click="dialogChoseFormTitle = false"
+            >
+              確認
+            </el-button>
+          </div>
+        </template>
+      </el-dialog>
+      <el-dialog v-model="dialogPureText" class="dialog-sm" title="">
         <div class="dialog-content">
           <h2 class="text-center">確認將案件狀態改為刪除？</h2>
         </div>
@@ -757,12 +793,7 @@
             </el-button>
           </div>
         </template>
-      </el-dialog> -->
-      <DialogPureTextModal
-        contents="確認將案件狀態改為刪除？"
-        :subButtonFn="cancelDialog"
-        :primaryButtonFn="enterDialog"
-      />
+      </el-dialog>
     </section>
   </div>
 </template>
@@ -777,18 +808,6 @@ import type { TabsPaneContext } from "element-plus";
 import { ElMessage } from "element-plus"; //toast
 
 import { useModalStatusStore } from "@/stores/modal-status";
-import DialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
-import DialogPureTextTitleModal from "@/components/modal/dialogPureTextTitleModal.vue";
-import { useModal } from "vue-final-modal";
-
-const onBtnShowMsg = (msg: string) => {
-  useModal({
-    component: DialogPureTextModal,
-    attrs: {
-      contents: "確認將案件狀態改為刪除？",
-    },
-  }).open();
-};
 
 const store = useModalStatusStore();
 
@@ -891,12 +910,13 @@ const openError = () => {
   });
 };
 
-// const dialogPureTextTitle = ref(false);
+const dialogPureTextTitle = ref(false);
 const dialogSingleFormTitle = ref(false);
 const dialogFormTitle = ref(false);
 const dialogChoseFormTitle = ref(false);
 const dialogTable = ref(false);
-// const dialogPureText = ref(false);
+const dialogCreateResource = ref(false);
+const dialogPureText = ref(false);
 
 const cancelDialog = () => {
   console.log("cancelDialog");

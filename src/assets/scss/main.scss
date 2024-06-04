@@ -73,7 +73,7 @@ body {
 }
 
 .wrap-min-height{
-  min-height: calc(100vh - 228px);
+  min-height: calc(100vh - 244px);
 }
 
 .card {
@@ -97,8 +97,20 @@ body {
 }
 
 /* ======== el-form ======== */
+.single-line-form-item{
+  .el-form-item{
+    margin-bottom: 16px;
+  }
+}
+
 .el-form-item{
   margin-bottom: 0;
+  align-items: center;
+
+  &__label{
+    justify-content: flex-start;
+    width: 140px;
+  }
 }
 
 /* ======== el-input ======== */
@@ -397,10 +409,28 @@ body {
 }
 
 /* ======== el-tag ======== */
-.el-tag.el-tag--primary {
-  --el-tag-bg-color: #E9FCDD;
-  --el-tag-border-color: #76C144;
-  --el-tag-hover-color: var(--el-color-primary);
+.el-tag {
+  &.el-tag--primary{
+    --el-tag-bg-color: #E9FCDD;
+    --el-tag-border-color: #76C144;
+    --el-tag-hover-color: var(--el-color-primary);
+    --el-tag-text-color: #76C144;
+  }
+
+  &.el-tag--warning{
+    --el-tag-bg-color: #FDF6EC;
+    --el-tag-border-color: #E6A23C;
+    --el-tag-hover-color: var(--el-color-warning);
+    --el-tag-text-color: #E6A23C;
+  }
+
+  &.el-tag--danger{
+    --el-tag-bg-color: #FEF0F0;
+    --el-tag-border-color: #F56C6C;
+    --el-tag-hover-color: var(--el-color-danger);
+    --el-tag-text-color: #F56C6C;
+  }
+
 }
 
 /* ======== el-menu ======== */
