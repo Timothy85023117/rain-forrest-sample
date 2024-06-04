@@ -116,6 +116,17 @@ const routes: RouteRecordRaw[] = [
                 import("@/views/systemManagement/menuManagement/IndexView.vue"),
             },
           },
+          {
+            //選資源管理主頁
+            path: "resource-management",
+            name: "resourceManagement",
+            components: {
+              default: () =>
+                import(
+                  "@/views/systemManagement/resourceManagement/IndexView.vue"
+                ),
+            },
+          },
         ],
       },
     ],
