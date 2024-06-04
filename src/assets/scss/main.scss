@@ -56,6 +56,7 @@ body {
   overflow: auto;
   transition: all 0.2s;
 
+  /* stylelint-disable-next-line selector-class-pattern */
   &.--collapse{
     inset: 60px 0 0 88px;
   }
@@ -821,33 +822,7 @@ body {
       flex-direction: column;
       justify-content: space-between;
       width: 750px;
-      min-height: 550px;
-    }
-
-    &--announcement {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 900px;
-      height: 85vh;
-      max-height: 760px;
-    }
-
-    &--attachment {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 750px;
-      height: 85vh;
-      max-height: 486px;
-    }
-
-    &--price-change-log {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      width: 700px;
-      max-height: 85vh;
+      min-height: 240px;
     }
 
     &--large {
@@ -905,11 +880,7 @@ body {
   }
 
   &__content {
-    display: flex;
-    flex: 1;
-    flex-direction: column;
     min-height: 0;
-    padding: 0 20px;
     overflow: auto;
 
     &::-webkit-scrollbar {

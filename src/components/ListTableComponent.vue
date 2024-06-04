@@ -160,7 +160,7 @@
       :total="50"
     />
   </div>
-  <DialogSingleFormModal />
+  <!-- <DialogSingleFormModal /> -->
   <DialogPureTextModal />
 </template>
 <script lang="ts">
@@ -170,12 +170,12 @@ export default {
 </script>
 <script lang="ts" setup>
 import { ref } from "vue";
-import DialogSingleFormModal from "@/components/modal/dialogSingleFormModal.vue";
 import DialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
 
 import { useModalStatusStore } from "@/stores/modal-status";
 
 import { useRouter } from "vue-router";
+import { usePopupModal } from "@/composables/modal";
 const store = useModalStatusStore();
 const router = useRouter();
 
@@ -195,11 +195,15 @@ const handleGotoDetail = () => {
     name: "listDetail",
   });
 };
+// todo: 之後改
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const openModel = ($event: any, index: number, row: User) => {
   $event.stopImmediatePropagation();
-  store.openDialogSingleFormModal();
+  usePopupModal().modal.singleForm("指派");
   console.log("openModel", index, row);
 };
+// todo: 之後改
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const deleteItem = ($event: any, index: number, row: User) => {
   $event.stopImmediatePropagation();
   store.openDialogPureTextModal();
