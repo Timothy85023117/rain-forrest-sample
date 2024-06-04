@@ -461,7 +461,7 @@
     </section>
     <h1>POPUP</h1>
     <section>
-      <el-button plain @click="dialogPureTextTitle = true">
+      <el-button plain @click="store.openDialogPureTextTitleModal">
         純文字含標題 Dialog（大）
       </el-button>
       <el-button plain @click="dialogSingleFormTitle = true">
@@ -476,11 +476,18 @@
       <el-button plain @click="dialogTable = true">
         表格 Dialog（大）
       </el-button>
-      <el-button plain @click="dialogPureText = true">
+      <el-button plain @click="onBtnShowMsg"> 純文字 Dialog（小） </el-button>
+      <!-- <el-button plain @click="store.openDialogPureTextModal()">
         純文字 Dialog（小）
-      </el-button>
+      </el-button> -->
 
-      <el-dialog v-model="dialogPureTextTitle" title="保存確認">
+      <DialogPureTextTitleModal
+        title="保存確認"
+        contents="如要繼續編輯回覆內容請點選暫存，如確認內容無誤請點選確認。"
+        :subButtonFn="cancelDialog"
+        :primaryButtonFn="enterDialog"
+      />
+      <!-- <el-dialog v-model="dialogPureTextTitle" title="保存確認">
         <div class="dialog-content">
           <h2 class="text-center">
             如要繼續編輯回覆內容請點選暫存，如確認內容無誤請點選確認。
@@ -500,7 +507,7 @@
             </el-button>
           </div>
         </template>
-      </el-dialog>
+      </el-dialog> -->
       <el-dialog v-model="dialogSingleFormTitle" title="指派">
         <div class="dialog-content">
           <el-form label-position="top" class="grid gap-4 grid-cols-3">
@@ -732,7 +739,7 @@
         </template>
       </el-dialog>
 
-      <el-dialog v-model="dialogPureText" class="dialog-sm" title="">
+      <!-- <el-dialog v-model="dialogPureText" class="dialog-sm" title="">
         <div class="dialog-content">
           <h2 class="text-center">確認將案件狀態改為刪除？</h2>
         </div>
@@ -750,7 +757,12 @@
             </el-button>
           </div>
         </template>
-      </el-dialog>
+      </el-dialog> -->
+      <DialogPureTextModal
+        contents="確認將案件狀態改為刪除？"
+        :subButtonFn="cancelDialog"
+        :primaryButtonFn="enterDialog"
+      />
     </section>
   </div>
 </template>
@@ -763,6 +775,22 @@ export default {
 import { ref } from "vue";
 import type { TabsPaneContext } from "element-plus";
 import { ElMessage } from "element-plus"; //toast
+
+import { useModalStatusStore } from "@/stores/modal-status";
+import DialogPureTextModal from "@/components/modal/dialogPureTextModal.vue";
+import DialogPureTextTitleModal from "@/components/modal/dialogPureTextTitleModal.vue";
+import { useModal } from "vue-final-modal";
+
+const onBtnShowMsg = (msg: string) => {
+  useModal({
+    component: DialogPureTextModal,
+    attrs: {
+      contents: "確認將案件狀態改為刪除？",
+    },
+  }).open();
+};
+
+const store = useModalStatusStore();
 
 const input = ref("");
 
@@ -868,7 +896,14 @@ const dialogSingleFormTitle = ref(false);
 const dialogFormTitle = ref(false);
 const dialogChoseFormTitle = ref(false);
 const dialogTable = ref(false);
-const dialogPureText = ref(false);
+// const dialogPureText = ref(false);
+
+const cancelDialog = () => {
+  console.log("cancelDialog");
+};
+const enterDialog = () => {
+  console.log("enterDialog");
+};
 </script>
 <style lang="scss" scoped>
 /* typography */
