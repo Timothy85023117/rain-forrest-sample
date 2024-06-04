@@ -10,6 +10,7 @@ import router from "./router";
 import HighchartsVue from "highcharts-vue";
 
 const app = createApp(App);
+
 app.use(createPinia());
 app.use(ElementUI);
 app.use(router);
