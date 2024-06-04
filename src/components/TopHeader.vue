@@ -89,9 +89,9 @@ const userName = "Tom (Tom)";
     }
 
     .logo {
-      width: 166px;
+      width: 114px;
       // height: 28px;
-      margin-left: 24px;
+      margin-left: 20px;
       text-decoration: none;
       cursor: pointer;
 
